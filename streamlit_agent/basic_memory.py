@@ -42,7 +42,7 @@ with st.sidebar:
         st.write(instruction)
 template = """Follow this instruction for all your answers:
 {instruction}
-This is the current history of our conversation:
+This is the conversation so far:
 {history}
 Human: {human_input}
 AI: """
