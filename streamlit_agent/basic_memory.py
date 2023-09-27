@@ -64,6 +64,7 @@ if st.button(label="Clear Chat"):
     msgs.clear()
     # Render current messages from StreamlitChatMessageHistory
     for msg in msgs.messages:
+        print(msg.type)
         if msg.type == "student":
             st.chat_message(msg.type,avatar="🧑‍⚖️" ).write(msg.content)
         else:
