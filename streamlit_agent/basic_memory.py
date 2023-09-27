@@ -47,7 +47,7 @@ This is the current history of our conversation:
 Human: {human_input}
 AI: """
 prompt = PromptTemplate(input_variables=["instruction", "history", "human_input"], template=template)
-llm_chain = LLMChain(llm=OpenAI(openai_api_key=openai_api_key,model="gpt-3.5-turbo-16k"), prompt=prompt)#, memory=memory)
+llm_chain = LLMChain(llm=OpenAI(openai_api_key=openai_api_key,model="gpt-3.5-turbo"), prompt=prompt)#, memory=memory)
 
 # Render current messages from StreamlitChatMessageHistory
 for msg in msgs.messages:
