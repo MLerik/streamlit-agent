@@ -15,8 +15,6 @@ memory = ConversationBufferMemory(chat_memory=msgs)
 if len(msgs.messages) == 0:
     msgs.add_ai_message("How can I help you?")
 
-view_messages = st.expander("View the message contents in session state")
-
 # Get an OpenAI API Key before continuing
 if "openai_api_key" in st.secrets:
     openai_api_key = st.secrets.openai_api_key
@@ -66,15 +64,3 @@ if st.button(label="Clear Chat"):
         else:
             st.chat_message(msg.type,avatar="🤖" ).write(msg.content)
 
-# Draw the messages at the end, so newly generated ones show up immediately
-with view_messages:
-    """
-    Memory initialized with:
-    ```python
-    msgs = StreamlitChatMessageHistory(key="langchain_messages")
-    memory = ConversationBufferMemory(chat_memory=msgs)
-    ```
-
-    Contents of `st.session_state.langchain_messages`:
-    """
-    view_messages.json(st.session_state.langchain_messages)
