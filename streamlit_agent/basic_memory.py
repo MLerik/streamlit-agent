@@ -4,11 +4,15 @@ from langchain.memory import ConversationBufferMemory
 from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
 from langchain.prompts import PromptTemplate
 import streamlit as st
+import streamlit_authenticator as stauth
+
 
 st.set_page_config(page_title="LPI Personal Legal Assistant", page_icon="📖")
 st.title(" 🤖 LPI Personal Legal Protection Assistant 🧑‍⚖️ ")
 
-
+if not st.secrets[my_secrets].login == st.text_input(label="Login:"):
+    st.info("Login credentials needed")
+    st.stop()
 # Set up memory
 msgs = StreamlitChatMessageHistory(key="langchain_messages")
 memory = ConversationBufferMemory(chat_memory=msgs)
