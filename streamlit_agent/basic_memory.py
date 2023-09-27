@@ -6,7 +6,7 @@ from langchain.prompts import PromptTemplate
 import streamlit as st
 
 st.set_page_config(page_title="LPI Personal Legal Assistant", page_icon="📖")
-st.title("📖 StreamlitChatMessageHistory")
+st.title("🤖🧑‍⚖️ LPI Personal Legal Assistant")
 
 """
 A basic example of using StreamlitChatMessageHistory to help LLMChain remember messages in a conversation.
