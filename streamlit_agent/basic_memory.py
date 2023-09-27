@@ -42,7 +42,8 @@ template = """
 {history}
 Human: {human_input}
 AI: """
-prompt = PromptTemplate(input_variables=["instruction", "history", "human_input"], template=template)
+prompt = PromptTemplate(input_variables=["history", "human_input"], template=template)
+prompt.format(instruction=instruction)
 llm_chain = LLMChain(llm=OpenAI(openai_api_key=openai_api_key), prompt=prompt, memory=memory)
 
 # Render current messages from StreamlitChatMessageHistory
@@ -53,7 +54,7 @@ for msg in msgs.messages:
 if prompt := st.chat_input():
     st.chat_message("human").write(prompt)
     # Note: new messages are saved to history automatically by Langchain during run
-    response = llm_chain.run({'instruction': instruction, 'human_input': prompt})
+    response = llm_chain.run(prompt)
     st.chat_message("ai").write(response)
 
 # Draw the messages at the end, so newly generated ones show up immediately
