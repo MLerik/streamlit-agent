@@ -53,7 +53,7 @@ for msg in msgs.messages:
 if prompt := st.chat_input():
     st.chat_message("human").write(prompt)
     # Note: new messages are saved to history automatically by Langchain during run
-    response = llm_chain.run(instruction=instruction,human_input=prompt)
+    response = llm_chain.run(instruction=st.session_state.instruction,human_input=prompt)
     st.chat_message("ai").write(response)
 
 # Draw the messages at the end, so newly generated ones show up immediately
