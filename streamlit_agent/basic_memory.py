@@ -15,6 +15,8 @@ if "logged_in" not in st.session_state:
         st.stop()
     else:
         st.session_state.logged_in = True
+        st.experimental_rerun()
+
 
 # Set up memory
 msgs = StreamlitChatMessageHistory(key="langchain_messages")
