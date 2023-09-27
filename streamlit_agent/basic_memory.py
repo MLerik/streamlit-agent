@@ -50,10 +50,10 @@ for msg in msgs.messages:
     st.chat_message(msg.type).write(msg.content)
 
 # If user inputs a new prompt, generate and draw a new response
-if prompt := (instruction,memory,st.chat_input()):
+if prompt := st.chat_input():
     st.chat_message("human").write(prompt)
     # Note: new messages are saved to history automatically by Langchain during run
-    response = llm_chain.run(prompt)
+    response = llm_chain.run(instruction,prompt)
     st.chat_message("ai").write(response)
 
 # Draw the messages at the end, so newly generated ones show up immediately
