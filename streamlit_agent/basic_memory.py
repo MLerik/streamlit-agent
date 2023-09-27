@@ -60,6 +60,8 @@ if prompt := st.chat_input():
     st.chat_message("ai").write(response)
     msgs.add_ai_message(response)
 
+if st.button(label="Clear Chat"):
+    msgs = StreamlitChatMessageHistory(key="langchain_messages")
 # Draw the messages at the end, so newly generated ones show up immediately
 with view_messages:
     """
