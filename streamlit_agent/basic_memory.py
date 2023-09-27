@@ -67,7 +67,7 @@ if st.button(label="Clear Chat"):
         if msg.type == "student":
             st.chat_message(msg.type,avatar="🧑‍⚖️" ).write(msg.content)
         else:
-            st.chat_message(msg.type,,avatar="🤖" ).write(msg.content)
+            st.chat_message(msg.type,avatar="🤖" ).write(msg.content)
 
 # Draw the messages at the end, so newly generated ones show up immediately
 with view_messages:
