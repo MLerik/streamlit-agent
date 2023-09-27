@@ -49,7 +49,7 @@ llm_chain = LLMChain(llm=OpenAI(openai_api_key=openai_api_key), prompt=prompt)#,
 
 # Render current messages from StreamlitChatMessageHistory
 for msg in msgs.messages:
-     if msg.type == "human":
+    if msg.type == "human":
         st.chat_message(msg.type,avatar="🧑‍⚖️" ).write(msg.content)
     else:
         st.chat_message(msg.type,avatar="🤖" ).write(msg.content)
