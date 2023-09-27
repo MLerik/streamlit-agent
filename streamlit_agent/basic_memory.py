@@ -1,5 +1,5 @@
 from langchain.chains import LLMChain
-from langchain.llms import OpenAI
+from langchain.llms import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
 from langchain.prompts import PromptTemplate
