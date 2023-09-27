@@ -35,7 +35,7 @@ if not openai_api_key:
 # Set up the LLMChain, passing in memory
 
 
-instruction = st.sidebar.text_input(placeholder="Tune your agent as you wish")
+instruction = st.sidebar.text_input(label="instructin_field",placeholder="Tune your agent as you wish")
 
 template = """You are an AI chatbot having a conversation with a human.
 {instruction}
