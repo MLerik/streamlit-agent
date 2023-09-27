@@ -8,8 +8,8 @@ import streamlit as st
 
 st.set_page_config(page_title="LPI Personal Legal Assistant", page_icon="📖")
 st.title(" 🤖 LPI Personal Legal Protection Assistant 🧑‍⚖️ ")
-login_secret = st.text_input(label="Login:")
-if not st.secrets["my_secrets"].login == login_secret:
+
+if not st.secrets["my_secrets"].login == st.text_input(label="Login:"):
     st.info("Login credentials needed")
     st.stop()
 
