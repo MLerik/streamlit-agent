@@ -37,8 +37,9 @@ if not openai_api_key:
 if "instruction" not in st.session_state:
     st.session_state["instruction"] = st.sidebar.text_input(label="instructin_field",placeholder="Tune your agent as you wish")
 
-template = """
+template = """Follow this instruction for all your answers:
 {instruction}
+This is the current history of our conversation:
 {history}
 Human: {human_input}
 AI: """
@@ -54,7 +55,7 @@ if prompt := st.chat_input():
     st.chat_message("human").write(prompt)
     msgs.add_user_message(prompt)
     # Note: new messages are saved to history automatically by Langchain during run
-    response = llm_chain.predict(instruction=st.session_state.instruction,history = msgs,human_input=prompt)
+    response = llm_chain.predict(instruction="answer in French all the time",history = msgs,human_input=prompt)
     st.chat_message("ai").write(response)
     msgs.add_ai_message(response)
 
