@@ -49,8 +49,10 @@ llm_chain = LLMChain(llm=OpenAI(openai_api_key=openai_api_key), prompt=prompt)#,
 
 # Render current messages from StreamlitChatMessageHistory
 for msg in msgs.messages:
-    st.chat_message(msg.type).write(msg.content)
-
+     if msg.type == "human":
+        st.chat_message(msg.type,avatar="🧑‍⚖️" ).write(msg.content)
+    else:
+        st.chat_message(msg.type,avatar="🤖" ).write(msg.content)
 # If user inputs a new prompt, generate and draw a new response
 if prompt := st.chat_input():
     st.chat_message("student",avatar="🧑‍⚖️").write(prompt)
@@ -64,7 +66,6 @@ if st.button(label="Clear Chat"):
     msgs.clear()
     # Render current messages from StreamlitChatMessageHistory
     for msg in msgs.messages:
-        st.write(msg.type)
         if msg.type == "human":
             st.chat_message(msg.type,avatar="🧑‍⚖️" ).write(msg.content)
         else:
