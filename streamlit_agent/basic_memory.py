@@ -8,12 +8,6 @@ import streamlit as st
 st.set_page_config(page_title="LPI Personal Legal Assistant", page_icon="📖")
 st.title("🤖🧑‍⚖️ LPI Personal Legal Assistant")
 
-"""
-A basic example of using StreamlitChatMessageHistory to help LLMChain remember messages in a conversation.
-The messages are stored in Session State across re-runs automatically. You can view the contents of Session State
-in the expander below. View the
-[source code for this app](https://github.com/langchain-ai/streamlit-agent/blob/main/streamlit_agent/basic_memory.py).
-"""
 
 # Set up memory
 msgs = StreamlitChatMessageHistory(key="langchain_messages")
