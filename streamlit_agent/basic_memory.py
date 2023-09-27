@@ -42,7 +42,7 @@ template = """
 {history}
 Human: {human_input}
 AI: """
-prompt = PromptTemplate(input_variables=["history", "human_input"], template=template)
+prompt = PromptTemplate(input_variables=["instruction","history", "human_input"], template=template)
 llm_chain = LLMChain(llm=OpenAI(openai_api_key=openai_api_key), prompt=prompt, memory=memory)
 
 # Render current messages from StreamlitChatMessageHistory
