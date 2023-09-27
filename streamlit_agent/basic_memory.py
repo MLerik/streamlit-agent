@@ -34,15 +34,15 @@ if not openai_api_key:
 
 # Set up the LLMChain, passing in memory
 
-
-instruction = st.sidebar.text_input(label="instructin_field",placeholder="Tune your agent as you wish")
+if "instruction" not in st.state:
+    instruction = st.sidebar.text_input(label="instructin_field",placeholder="Tune your agent as you wish")
 
 template = """
 {instruction}
 {history}
 Human: {human_input}
 AI: """
-prompt = PromptTemplate(input_variables=["instruction","history", "human_input"], template=template)
+prompt = PromptTemplate(input_variables=["instruction", "history", "human_input"], template=template)
 llm_chain = LLMChain(llm=OpenAI(openai_api_key=openai_api_key), prompt=prompt, memory=memory)
 
 # Render current messages from StreamlitChatMessageHistory
@@ -53,8 +53,8 @@ for msg in msgs.messages:
 if prompt := st.chat_input():
     st.chat_message("human").write(prompt)
     # Note: new messages are saved to history automatically by Langchain during run
-    #response = llm_chain.run(prompt)
-    #st.chat_message("ai").write(response)
+    response = llm_chain.run(instruction=instruction,human_input=prompt)
+    st.chat_message("ai").write(response)
 
 # Draw the messages at the end, so newly generated ones show up immediately
 with view_messages:
