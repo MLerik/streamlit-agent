@@ -30,8 +30,9 @@ if not openai_api_key:
 
 with st.sidebar:
     instruction = st.text_area(label="Instruct your assistant:",placeholder="Tune your agent as you wish", height=200)
-
-    st.write("the current instruction is", instruction)
+    if instruction != "":
+        st.write("The current instruction is ")
+        st.write(instruction)
 template = """Follow this instruction for all your answers:
 {instruction}
 This is the current history of our conversation:
