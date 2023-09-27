@@ -4,7 +4,6 @@ from langchain.memory import ConversationBufferMemory
 from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
 from langchain.prompts import PromptTemplate
 import streamlit as st
-import streamlit_authenticator as stauth
 
 
 st.set_page_config(page_title="LPI Personal Legal Assistant", page_icon="📖")
