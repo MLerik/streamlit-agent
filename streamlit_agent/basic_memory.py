@@ -62,6 +62,9 @@ if prompt := st.chat_input():
 
 if st.button(label="Clear Chat"):
     msgs = StreamlitChatMessageHistory(key="langchain_messages")
+    # Render current messages from StreamlitChatMessageHistory
+    for msg in msgs.messages:
+        st.chat_message(msg.type).write(msg.content)
 # Draw the messages at the end, so newly generated ones show up immediately
 with view_messages:
     """
