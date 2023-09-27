@@ -5,7 +5,7 @@ from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
 from langchain.prompts import PromptTemplate
 import streamlit as st
 
-st.set_page_config(page_title="StreamlitChatMessageHistory", page_icon="📖")
+st.set_page_config(page_title="LPI Personal Legal Assistant", page_icon="📖")
 st.title("📖 StreamlitChatMessageHistory")
 
 """
@@ -33,12 +33,16 @@ if not openai_api_key:
     st.stop()
 
 # Set up the LLMChain, passing in memory
-template = """You are an AI chatbot having a conversation with a human.
 
+
+instruction = st.sidebar.text_input(placeholder="Tune your agent as you wish")
+
+template = """You are an AI chatbot having a conversation with a human.
+{instruction}
 {history}
 Human: {human_input}
 AI: """
-prompt = PromptTemplate(input_variables=["history", "human_input"], template=template)
+prompt = PromptTemplate(input_variables=["instruction", "history", "human_input"], template=template)
 llm_chain = LLMChain(llm=OpenAI(openai_api_key=openai_api_key), prompt=prompt, memory=memory)
 
 # Render current messages from StreamlitChatMessageHistory
