@@ -35,7 +35,7 @@ if not openai_api_key:
 # Set up the LLMChain, passing in memory
 
 with st.sidebar:
-    instruction = st.text_input(label="Instructions",placeholder="Tune your agent as you wish")
+    instruction = st.text_area(label="Instructions",placeholder="Tune your agent as you wish", height=200)
 
     st.write("the current instruction is", instruction)
 template = """Follow this instruction for all your answers:
