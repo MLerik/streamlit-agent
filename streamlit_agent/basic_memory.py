@@ -34,8 +34,9 @@ if not openai_api_key:
 
 # Set up the LLMChain, passing in memory
 
-if "instruction" not in st.session_state:
-    st.session_state["instruction"] = st.sidebar.text_input(label="instructin_field",placeholder="Tune your agent as you wish")
+with st.sidebar:
+    st.session_state.instruction = st.text_input(label="instructin_field",placeholder="Tune your agent as you wish")
+    
 
 template = """Follow this instruction for all your answers:
 {instruction}
