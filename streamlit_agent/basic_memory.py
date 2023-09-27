@@ -16,8 +16,8 @@ if len(msgs.messages) == 0:
     msgs.add_ai_message("How can I help you?")
 
 # Get an OpenAI API Key before continuing
-if "openai_api_key" in st.secrets:
-    openai_api_key = st.secrets.openai_api_key
+if "openai_api_key" in st.secrets["my_secrets"]:
+    openai_api_key = st.secrets["my_secrets"].openai_api_key
 else:
     openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 if not openai_api_key:
