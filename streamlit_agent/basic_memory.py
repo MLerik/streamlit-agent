@@ -36,8 +36,8 @@ if not openai_api_key:
 
 with st.sidebar:
     st.session_state.instruction = st.text_input(label="instructin_field",placeholder="Tune your agent as you wish")
-    
 
+st.write("the current instruction is", st.session_state.instruction)
 template = """Follow this instruction for all your answers:
 {instruction}
 This is the current history of our conversation:
