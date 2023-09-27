@@ -61,7 +61,7 @@ if prompt := st.chat_input():
     msgs.add_ai_message(response)
 
 if st.button(label="Clear Chat"):
-    msgs = StreamlitChatMessageHistory(key="langchain_messages")
+    msgs.clear()
     # Render current messages from StreamlitChatMessageHistory
     for msg in msgs.messages:
         st.chat_message(msg.type).write(msg.content)
