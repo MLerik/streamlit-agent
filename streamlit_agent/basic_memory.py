@@ -6,7 +6,7 @@ from langchain.prompts import PromptTemplate
 import streamlit as st
 
 st.set_page_config(page_title="LPI Personal Legal Assistant", page_icon="📖")
-st.title("🤖🧑‍⚖️ LPI Personal Legal Assistant")
+st.title(" 🤖 LPI Personal Legal Protection Assistant 🧑‍⚖️ ")
 
 
 # Set up memory
