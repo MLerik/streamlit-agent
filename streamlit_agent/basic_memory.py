@@ -53,11 +53,11 @@ for msg in msgs.messages:
 
 # If user inputs a new prompt, generate and draw a new response
 if prompt := st.chat_input():
-    st.chat_message("human").write(prompt)
+    st.chat_message("human",avatar="🧑‍⚖️").write(prompt)
     msgs.add_user_message(prompt)
     # Note: new messages are saved to history automatically by Langchain during run
     response = llm_chain.predict(instruction=instruction,history = msgs,human_input=prompt)
-    st.chat_message("ai").write(response)
+    st.chat_message("ai,avatar="🤖").write(response)
     msgs.add_ai_message(response)
 
 if st.button(label="Clear Chat"):
