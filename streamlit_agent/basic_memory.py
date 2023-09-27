@@ -37,7 +37,7 @@ if not openai_api_key:
 
 instruction = st.sidebar.text_input(label="instructin_field",placeholder="Tune your agent as you wish")
 
-template = """You are an AI chatbot having a conversation with a human.
+template = """
 {instruction}
 {history}
 Human: {human_input}
@@ -50,7 +50,7 @@ for msg in msgs.messages:
     st.chat_message(msg.type).write(msg.content)
 
 # If user inputs a new prompt, generate and draw a new response
-if prompt := st.chat_input():
+if prompt := (instruction,memory,st.chat_input()):
     st.chat_message("human").write(prompt)
     # Note: new messages are saved to history automatically by Langchain during run
     response = llm_chain.run(prompt)
