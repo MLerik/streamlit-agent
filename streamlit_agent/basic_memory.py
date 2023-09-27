@@ -9,9 +9,12 @@ import streamlit as st
 st.set_page_config(page_title="LPI Personal Legal Assistant", page_icon="📖")
 st.title(" 🤖 LPI Personal Legal Protection Assistant 🧑‍⚖️ ")
 
-if not st.secrets["my_secrets"].login == st.text_input(label="Login:"):
-    st.info("Login credentials needed")
-    st.stop()
+if logged_in not in st.session_state:
+    if not st.secrets["my_secrets"].login == st.text_input(label="Login:"):
+        st.info("Login credentials needed")
+        st.stop()
+    else:
+        st.session_state.logged_in = True
 
 # Set up memory
 msgs = StreamlitChatMessageHistory(key="langchain_messages")
