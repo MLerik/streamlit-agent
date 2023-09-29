@@ -48,7 +48,7 @@ This is the current request:
 Human: {human_input}
 AI: """
 prompt = PromptTemplate(input_variables=["instruction", "history", "human_input"], template=template)
-llm_chain = LLMChain(llm=ChatOpenAI(openai_api_key=openai_api_key,model="gpt-3.5-turbo-16k"), prompt=prompt, memory=memory)
+llm_chain = LLMChain(llm=ChatOpenAI(openai_api_key=openai_api_key,model="gpt-3.5-turbo-16k"), prompt=prompt)#, memory=memory)
 
 # Render current messages from StreamlitChatMessageHistory
 for msg in msgs.messages:
@@ -61,7 +61,7 @@ if prompt := st.chat_input():
     st.chat_message("student",avatar="🧑‍⚖️").write(prompt)
     msgs.add_user_message(prompt)
     # Note: new messages are saved to history automatically by Langchain during run
-    response = llm_chain.predict(instruction=instruction,history = msgs,human_input=prompt)
+    response = llm_chain.predict(instruction=instruction,history = msgs.messages,human_input=prompt)
     st.chat_message("LPI Assistant",avatar="🤖").write(response)
     msgs.add_ai_message(response)
 
