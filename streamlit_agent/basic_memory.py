@@ -52,16 +52,16 @@ llm_chain = LLMChain(llm=ChatOpenAI(openai_api_key=openai_api_key,model="gpt-3.5
 # Render current messages from StreamlitChatMessageHistory
 for msg in msgs.messages:
     if msg.type == "human":
-        st.chat_message(msg.type,avatar="🧑‍⚖️" ).markdown(msg.content)
+        st.chat_message(msg.type,avatar="🧑‍⚖️" ).write(msg.content)
     else:
-        st.chat_message(msg.type,avatar="🤖" ).markdown(msg.content)
+        st.chat_message(msg.type,avatar="🤖" ).write(msg.content)
 # If user inputs a new prompt, generate and draw a new response
 if prompt := st.chat_input():
-    st.chat_message("student",avatar="🧑‍⚖️").markdown(prompt)
+    st.chat_message("student",avatar="🧑‍⚖️").write(prompt)
     msgs.add_user_message(prompt)
     # Note: new messages are saved to history automatically by Langchain during run
     response = llm_chain.predict(instruction=instruction,history = msgs,human_input=prompt)
-    st.chat_message("LPI Assistant",avatar="🤖").markdown(response)
+    st.chat_message("LPI Assistant",avatar="🤖").write(response)
     msgs.add_ai_message(response)
 
 if st.button(label="Clear Chat"):
@@ -69,7 +69,7 @@ if st.button(label="Clear Chat"):
     # Render current messages from StreamlitChatMessageHistory
     for msg in msgs.messages:
         if msg.type == "human":
-            st.chat_message(msg.type,avatar="🧑‍⚖️" ).markdown(msg.content)
+            st.chat_message(msg.type,avatar="🧑‍⚖️" ).write(msg.content)
         else:
-            st.chat_message(msg.type,avatar="🤖" ).markdown(msg.content)
+            st.chat_message(msg.type,avatar="🤖" ).write(msg.content)
 
