@@ -44,6 +44,7 @@ template = """Follow this instruction for all your answers:
 {instruction}
 This is the conversation so far:
 {history}
+This is the current request:
 Human: {human_input}
 AI: """
 prompt = PromptTemplate(input_variables=["instruction", "history", "human_input"], template=template)
